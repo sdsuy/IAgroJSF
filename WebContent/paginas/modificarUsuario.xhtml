@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/plantillas/principal.xhtml">
+			<ui:define name="pageTitle">Editar Usuario</ui:define>
+			<ui:define name="pageHeader">Editar Usuario</ui:define>
+			<ui:define name="body">
+			
+				<h:form>
+					<h:panelGrid columns="3">
+					
+						Nombre:
+						<h:inputText id="nombre" value="#{usuarioBean.selectedUsuario.nombre}" required="true" label="Nombre" />
+						<h:message for="nombre" style="color:" />
+						
+						Apellido:
+						<h:inputText id="apellido" value="#{usuarioBean.selectedUsuario.apellido}" required="true" label="Apellido" />
+						<h:message for="apellido" style="color:" />
+						
+						Documento:
+						<h:inputText id="documento" value="#{usuarioBean.selectedUsuario.documento}" required="true" label="Documento" />
+						<h:message for="documento" style="color:" />
+						
+						Clave:
+						<h:inputText id="clave" value="#{usuarioBean.selectedUsuario.clave}" required="true" label="Calve" />
+						<h:message for="clave" style="color:" />
+						
+						Email:
+						<h:inputText id="email" value="#{usuarioBean.selectedUsuario.email}" required="true" label="Email" />
+						<h:message for="email" style="color:" />
+						
+						Nickname:
+						<h:inputText id="nickname" value="#{usuarioBean.selectedUsuario.nickname}" required="true" label="Nickname" />
+						<h:message for="nickname" style="color:" />
+						
+						Instituto:
+						<h:inputText id="instituto" value="#{usuarioBean.selectedUsuario.instituto}" required="true" label="Instituto" />
+						<h:message for="instituto" style="color:" />
+						
+						Profesion:
+						<h:inputText id="profesion" value="#{usuarioBean.selectedUsuario.profesion}" required="true" label="profesion" />
+						<h:message for="profesion" style="color:" />
+						
+						Rol:
+						<h:inputText id="rol" value="#{usuarioBean.selectedUsuario.rol.rol}" required="true" label="Rol" />
+						<h:message for="rol" style="color:" />
+						
+					</h:panelGrid>
+					<h:commandButton value="Modificar" action="#{usuarioBean.modificarUsuario}" />
+				</h:form>
+				
+			</ui:define>
+			<ui:define name="userData"></ui:define>
+	</ui:composition>
+
+</html>
