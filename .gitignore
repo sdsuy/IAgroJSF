@@ -1,0 +1,7 @@
+.classpath
+.project
+.tern-project
+.settings/
+ant/
+WebContent/WEB-INF/
+WebContent/META-INF/MANIFEST.MF
