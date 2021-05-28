@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/plantillas/principal.xhtml">
+		<ui:define name="pageTitle">Listado de Usuarios</ui:define>
+		<ui:define name="pageHeader">Listado de Usuarios</ui:define>
+		
+		<ui:define name="body">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nombre"></h:outputLabel>
+					<h:inputText id="nombre" value="#{usuarioBean.selectedNombre}"></h:inputText>
+					
+					<h:outputLabel value="Rol"></h:outputLabel>
+					<h:selectOneMenu value="#{usuarioBean.selectedRol}">
+						<f:selectItem itemValue="" itemLabel="--Todos--"/>
+						<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
+						<f:selectItem itemValue="EXPERTO" itemLabel="Experto"/>
+						<f:selectItem itemValue="COMUN" itemLabel="Comun"/>
+					</h:selectOneMenu>
+				</h:panelGrid>
+				<h:commandButton value="Enviar" action="#{usuarioBean.filterUsuarios}"></h:commandButton>
+			</h:form>
+		</ui:define>
+		
+		<ui:define name="userData">
+			<h:dataTable value="#{usuarioBean.selectedUsuarios}" var="usuario" styleClass="userTable" headerClass="userTableHeader">
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+					<h:outputText value="#{usuario.nombre}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+					<h:outputText value="#{usuario.apellido}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Documento</f:facet>
+					<h:outputText value="#{usuario.documento}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{usuario.email}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nickname</f:facet>
+					<h:outputText value="#{usuario.nickname}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Rol</f:facet>
+					<h:outputText value="#{usuario.rol.rol}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:form>
+						<h:commandButton action="#{usuarioBean.modificar}" value="Modificar">
+							<f:setPropertyActionListener target="#{usuarioBean.selectedUsuario}" value="#{usuario}" />
+						</h:commandButton>
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+
+</html>
